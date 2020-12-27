@@ -1,9 +1,5 @@
 ﻿using eShopSolution.Application.Catalog.Products;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace eShopSolution.BackendApi.Controllers
@@ -17,6 +13,7 @@ namespace eShopSolution.BackendApi.Controllers
         {
             _publicProductService = publicProductService;
         }
+        [HttpGet]
        public async Task<IActionResult> Get()
         {
             var product = await _publicProductService.GetAll();
