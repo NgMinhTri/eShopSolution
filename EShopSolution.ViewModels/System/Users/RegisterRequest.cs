@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace eShopSolution.ViewModels.System
+namespace eShopSolution.ViewModels.System.Users
 {
     public class RegisterRequest
     {
