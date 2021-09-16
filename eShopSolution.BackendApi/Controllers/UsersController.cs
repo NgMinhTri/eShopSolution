@@ -43,5 +43,14 @@ namespace eShopSolution.BackendApi.Controllers
             }
             return Ok();
         }
+
+        //http://localhost/api/users/paging?pageIndex=1&pageSize=10&keyword=
+        [HttpGet("paging")]
+        [Authorize]
+        public async Task<IActionResult> GetAllPaging([FromQuery] GetUserPagingRequest request)
+        {
+            var products = await _userService.GetUsersPaging(request);
+            return Ok(products);
+        }
     }
 }

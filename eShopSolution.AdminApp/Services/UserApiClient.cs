@@ -1,8 +1,10 @@
-﻿using eShopSolution.ViewModels.System.Users;
+﻿using eShopSolution.ViewModels.Common;
+using eShopSolution.ViewModels.System.Users;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,6 +31,18 @@ namespace eShopSolution.AdminApp.Services
             var response = await client.PostAsync("/api/users/authenticate", httpContent);
             var token = await response.Content.ReadAsStringAsync();
             return token;
+        }
+
+        public async Task<PagedResult<UserVm>> GetUsersPagings(GetUserPagingRequest request)
+        {
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(_configuration["BaseAddressAPI"]);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", request.BearerToken);
+            var response = await client.GetAsync($"/api/users/paging?pageIndex=" +
+                $"{request.PageIndex}&pageSize={request.PageSize}&keyword={request.Keyword}");
+            var body = await response.Content.ReadAsStringAsync();
+            var users = JsonConvert.DeserializeObject<PagedResult<UserVm>>(body);
+            return users;
         }
     }
 }

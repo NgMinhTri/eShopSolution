@@ -13,11 +13,11 @@ namespace eShopSolution.BackendApi.Controllers
     [Authorize]
     public class ProductsController : ControllerBase
     {
-        private readonly IPublicProductService _publicProductService;
-        private readonly IManageProductService _manageProductService;
+        private readonly IProductService _publicProductService;
+        private readonly IProductService _manageProductService;
 
-        public ProductsController(IPublicProductService publicProductService,
-            IManageProductService manageProductService)
+        public ProductsController(IProductService publicProductService,
+            IProductService manageProductService)
         {
             _publicProductService = publicProductService;
             _manageProductService = manageProductService;
