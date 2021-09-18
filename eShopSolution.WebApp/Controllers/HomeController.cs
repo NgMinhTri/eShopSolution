@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using eShopSolution.WebApp.Models;
@@ -20,7 +16,8 @@ namespace eShopSolution.WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            ProductModel model = new ProductModel();
+            return View(model);
         }
 
         public IActionResult Privacy()
