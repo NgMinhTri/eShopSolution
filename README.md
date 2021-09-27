@@ -6,6 +6,5 @@
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFrameworkCore.Tools
 - Microsoft.EntityFrameworkCore.Design
-## Youtube tutorial
-## How to configure and run
-## How to contribute
+## Admin Template: https://startbootstrap.com/template/sb-admin
+## Shop Template: https://www.free-css.com/free-css-templates/page194/bootstrap-shop
