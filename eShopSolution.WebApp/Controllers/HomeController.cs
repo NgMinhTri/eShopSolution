@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using eShopSolution.WebApp.Models;
+using Microsoft.AspNetCore.Localization;
+using System;
+using Microsoft.AspNetCore.Http;
 
 namespace eShopSolution.WebApp.Controllers
 {
@@ -29,6 +32,17 @@ namespace eShopSolution.WebApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        // Hỗ trợ đa ngôn ngữ cho Web
+        public IActionResult SetCultureCookie(string cltr, string returnUrl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(cltr)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+                );
+            return LocalRedirect(returnUrl);
         }
     }
 }
