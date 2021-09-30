@@ -1,4 +1,5 @@
-﻿using eShopSolution.Utilities.Constants;
+﻿
+using eShopSolution.Utilities.Constants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -8,7 +9,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace eShopSolution.AdminApp.Services
+namespace eShopSolution.ApiIntegration
 {
     public class BaseApiClient
     {
@@ -36,7 +37,7 @@ namespace eShopSolution.AdminApp.Services
             if (response.IsSuccessStatusCode)
             {
                 TResponse myDeserializedObjList = (TResponse)JsonConvert.DeserializeObject(body, typeof(TResponse));
-                return  myDeserializedObjList;
+                return myDeserializedObjList;
             }
             return JsonConvert.DeserializeObject<TResponse>(body);
         }
