@@ -1,5 +1,6 @@
 ﻿using eShopSolution.ViewModels.Catalog.Products;
 using eShopSolution.ViewModels.Common;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace  eShopSolution.ApiIntegration
@@ -10,5 +11,6 @@ namespace  eShopSolution.ApiIntegration
         Task<bool> CreateProduct(ProductCreateRequest request);
         Task<ApiResult<bool>> CategoryAssign(int productId, CategoryAssignRequest request);
         Task<ProductVm> GetById(int productId, string languageId);
+        Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take);
     }
 }
