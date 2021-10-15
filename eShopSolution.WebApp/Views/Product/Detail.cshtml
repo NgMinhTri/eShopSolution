@@ -11,13 +11,13 @@
 
 <ul class="breadcrumb">
     <li><a href="/">Home</a> <span class="divider">/</span></li>
-    <li><a href="/@culture/@_loc["categoryUrl"]/@Model.Category.Name">@Model.Category.Name</a> <span class="divider">/</span></li>
+    @*<li><a href="/@culture/@_loc["categoryUrl"]/@Model.Category.Name">@Model.Category.Name</a> <span class="divider">/</span></li>*@
     <li class="active">@Model.Product.Name</li>
 </ul>
 <div class="row">
     <div id="gallery" class="span3">
         <a href="@Model.Product.ThumbnailImage" title="@Model.Product.Name">
-            <img src="@Model.Product.ThumbnailImage" style="width:100%" alt="@Model.Product.Name" />
+            <img src="@(Configuration["BaseAddress"] + Model.Product.ThumbnailImage)" style="width:100%" alt="@Model.Product.Name" />
         </a>
         <div id="differentview" class="moreOptopm carousel slide">
             <div class="carousel-inner">
