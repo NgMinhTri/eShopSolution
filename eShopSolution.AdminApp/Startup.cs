@@ -1,4 +1,4 @@
-using eShopSolution.AdminApp.Services;
+using eShopSolution.ApiIntegration;
 using eShopSolution.ViewModels.System.Users;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -41,11 +41,15 @@ namespace eShopSolution.AdminApp
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(2);
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IUserApiClient, UserApiClient>();
+            services.AddTransient<IRoleApiClient, RoleApiClient>();
+            services.AddTransient<ILanguageApiClient, LanguageApiClient>();
+            services.AddTransient<IProductApiClient, ProductApiClient>();
+            services.AddTransient<ICategoryApiClient, CategoryApiClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
